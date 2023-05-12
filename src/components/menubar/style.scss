@@ -10,12 +10,16 @@
     flex-direction: row;
     list-style: none;
     justify-content: space-between;
+    .menu-endBig{
+        margin-top: 5px;
+    }
     .nav-left{
         display: flex;
         flex-flow: left;
     }
     .brand{
         margin-top: 10px;
+        align-items: left;
     }
     .menu-middle ul{
         display: flex;
@@ -26,7 +30,7 @@
     }
     .menu-end{
         margin-top: 5px;
-        display: flex;
+        display: none;
     }
     .dropdown-menu{
         position: relative;
@@ -56,6 +60,9 @@ color: gray;
         background-color: red;
         .original-menu{
             display: unset;
+            .menu-endBig{
+                display: none;
+            }
             .nav-left{
                 display: flex;
                 justify-content: space-between;

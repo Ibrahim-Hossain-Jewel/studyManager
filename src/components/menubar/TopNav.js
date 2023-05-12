@@ -41,6 +41,9 @@ class TopNav extends React.Component{
                   <div className="nav-left">
                     <div className="brand"><li>{start}</li>
                     </div>
+                    <div className="menu-end">
+                    <li>{end}</li>
+                  </div>
                     <div className="menu-middle">
                     
                       <ul>
@@ -70,7 +73,7 @@ class TopNav extends React.Component{
                       </ul>
                     </div>
                   </div>
-                  <div className="menu-end">
+                  <div className="menu-endBig">
                     <li>{end}</li>
                   </div>
                 </div>
