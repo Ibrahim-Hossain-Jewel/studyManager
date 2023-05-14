@@ -20,11 +20,13 @@ class TopNav extends React.Component{
       if(this.state.themeState == false){
         localStorage.setItem('themeName', 'dark');
         localStorage.setItem('themeState', true);
+        localStorage.setItem('themeIcon', "pi pi-moon");
         this.setState({themeIcon: "pi pi-moon", themeState: Boolean(localStorage.getItem("themeState"))});
       }
       if(this.state.themeState == true){
         localStorage.setItem('themeName', 'light');
         localStorage.setItem('themeState', false);
+        localStorage.setItem('themeIcon', 'pi pi-sun');
         this.setState({themeIcon: "pi pi-sun", themeState: Boolean(! localStorage.getItem("themeState"))});
       }
     }
@@ -44,6 +46,7 @@ class TopNav extends React.Component{
     }
     render(){
       console.log(JSON.parse(localStorage.getItem("themeState")));
+      console.log("icon", localStorage.getItem('themeIcon'));
       document.body.className=localStorage.getItem("themeName");
       const start = <img alt="logo" src="https://primefaces.org/cdn/primereact/images/logo.png" height="40" className="mr-2"></img>;
       const end = <InputText placeholder="Search" type="text" className="w-full" />;
@@ -85,8 +88,7 @@ class TopNav extends React.Component{
                           <li><Link  className="p-menubar-item" to="/ModelTest">Model Test</Link></li>
                           <li><Link  className="p-menubar-item" to="/ModelTest">My Classes</Link></li>
                           <li><Link  className="p-menubar-item" to="/ModelTest">My Money</Link></li>
-                          <li><Link className="p-menubar-item"> <InputSwitch checked={JSON.parse(localStorage.getItem("themeState"))} onChange={this.themeController}/>  <i className={this.state.themeIcon}></i></Link></li>
-                          
+                          <li><Link className="p-menubar-item"> <InputSwitch checked={JSON.parse(localStorage.getItem("themeState"))} onChange={this.themeController}/>  <i className={localStorage.getItem('themeIcon')}></i></Link></li>
                           <li><Link  className="p-menubar-item" to="/Quit">Log out</Link></li>
                         </div>
                       </ul>

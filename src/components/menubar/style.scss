@@ -10,6 +10,10 @@
     flex-direction: row;
     list-style: none;
     justify-content: space-between;
+    .p-inputswitch {
+        width: 3rem;
+        height: 0.75rem;
+    }
     .menu-endBig{
         margin-top: 5px;
     }
@@ -66,10 +70,7 @@ color: gray;
                 justify-content: space-between;
                 text-align:left;
             }
-            .p-inputswitch {
-                width: 3rem;
-                height: 0.75rem;
-            }
+            
             .menu-middle ul{
                 display: unset;
                 .navigation {
