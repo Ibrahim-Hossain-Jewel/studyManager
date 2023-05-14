@@ -2,9 +2,22 @@
     box-sizing: border-box;
     background: black;
     color: white;
+    a:visited {
+        color: white;
+    }
+    a:hover{
+        color: gray;
+    }
+
 }
 .light{
     box-sizing: border-box;
     background: white;
     color: black;
+    a:visited {
+        color: black;
+    }
+    a:hover{
+        color: gray;
+    }
 }

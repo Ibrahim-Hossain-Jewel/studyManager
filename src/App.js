@@ -8,17 +8,18 @@ import TopNav from './components/menubar/TopNav';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import './DarkTheme.scss'; //linked theme SCSS
 import React from 'react';
+import Home from './components/home';
 class App extends React.Component {
   render(){
     return (
       <div className="App">
         <header className="App-header">
             <Router>
+              <TopNav />
               <Routes>
-                <Route path="/" exact element = {<TopNav />} />
+                <Route path="/" exact element = {<Home />} />
               </Routes>
             </Router>
-          <h1>Hello world</h1>
         </header>
       </div>
     );

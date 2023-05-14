@@ -75,7 +75,10 @@ class TopNav extends React.Component{
                             Home
                           </Link></li>
                           <div className="dropdown-menu">
-                            <li onClick={this.dropdownController}   ><Link>Study level <i className={this.state.dropdown}></i> </Link>
+                            <li onClick={this.dropdownController} className="studyLevelOver">
+                              <Link>
+                                <span>Study level</span> <i className={this.state.dropdown}></i>
+                              </Link>
                             <li className={`${this.state.off} flex-none`}>
                               <li><Link>Primary School</Link></li>
                               <li><Link>High School</Link></li>
