@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { InputText } from 'primereact/inputtext';
+import { InputSwitch } from "primereact/inputswitch";
 import './style.scss';
 class TopNav extends React.Component{
     constructor(){
@@ -9,7 +10,23 @@ class TopNav extends React.Component{
           off: "hidden",
           dropdown: "pi pi-angle-down",
           navigationOff: "hiddenMainNav",
+          navIcon: "pi pi-align-right",
+          themeContent: "Dark",
+          themeIcon: "pi pi-sun",
+          themeState: false
         }
+    }
+    themeController = ()=>{
+      if(this.state.themeState == false){
+        localStorage.setItem('themeName', 'dark');
+        localStorage.setItem('themeState', true);
+        this.setState({themeIcon: "pi pi-moon", themeState: Boolean(localStorage.getItem("themeState"))});
+      }
+      if(this.state.themeState == true){
+        localStorage.setItem('themeName', 'light');
+        localStorage.setItem('themeState', false);
+        this.setState({themeIcon: "pi pi-sun", themeState: Boolean(! localStorage.getItem("themeState"))});
+      }
     }
     dropdownController = ()=>{
       if(this.state.off == "hidden"){
@@ -20,12 +37,14 @@ class TopNav extends React.Component{
     }
     navigationController = ()=>{
       if(this.state.navigationOff == "hiddenMainNav"){
-        this.setState({navigationOff: "showMainNav"});
+        this.setState({navigationOff: "showMainNav", off: "hidden", navIcon: "pi pi-times"});
       }if(this.state.navigationOff == "showMainNav"){
-        this.setState({navigationOff: "hiddenMainNav"});
+        this.setState({navigationOff: "hiddenMainNav", navIcon: "pi pi-align-right"});
       }
     }
     render(){
+      console.log(JSON.parse(localStorage.getItem("themeState")));
+      document.body.className=localStorage.getItem("themeName");
       const start = <img alt="logo" src="https://primefaces.org/cdn/primereact/images/logo.png" height="40" className="mr-2"></img>;
       const end = <InputText placeholder="Search" type="text" className="w-full" />;
         return (
@@ -37,7 +56,6 @@ class TopNav extends React.Component{
             </style> */}
               <div className="topBar">
                 <div className="original-menu">
-                  
                   <div className="nav-left">
                     <div className="brand"><li>{start}</li>
                     </div>
@@ -45,10 +63,9 @@ class TopNav extends React.Component{
                     <li>{end}</li>
                   </div>
                     <div className="menu-middle">
-                    
                       <ul>
                       <div className="navigation" onClick={this.navigationController}>
-                          <i className="pi pi-align-right"></i>
+                          <i className={this.state.navIcon}></i>
                       </div>
                         <div className={`${this.state.navigationOff} jewel`} >
                           <li><Link to="/">
@@ -68,6 +85,8 @@ class TopNav extends React.Component{
                           <li><Link  className="p-menubar-item" to="/ModelTest">Model Test</Link></li>
                           <li><Link  className="p-menubar-item" to="/ModelTest">My Classes</Link></li>
                           <li><Link  className="p-menubar-item" to="/ModelTest">My Money</Link></li>
+                          <li><Link className="p-menubar-item"> <InputSwitch checked={JSON.parse(localStorage.getItem("themeState"))} onChange={this.themeController}/>  <i className={this.state.themeIcon}></i></Link></li>
+                          
                           <li><Link  className="p-menubar-item" to="/Quit">Log out</Link></li>
                         </div>
                       </ul>

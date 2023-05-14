@@ -1,5 +1,5 @@
+
 .topBar {
-    background-color: white;
     padding: 15px;
 }
 .jewel{
@@ -46,7 +46,6 @@
     list-style: none;
 }
 .topBar a {
-color: black;
 font-size: 20px;
 text-decoration: none;
 padding-left: 20px;
@@ -57,7 +56,6 @@ color: gray;
 
 @media only screen and (max-width: 920px) {
     .mainNavBar{
-        background-color: red;
         .original-menu{
             display: unset;
             .menu-endBig{
@@ -68,11 +66,17 @@ color: gray;
                 justify-content: space-between;
                 text-align:left;
             }
+            .p-inputswitch {
+                width: 3rem;
+                height: 0.75rem;
+            }
             .menu-middle ul{
                 display: unset;
                 .navigation {
                     text-align: right;
                     display: block;
+                    cursor: pointer;
+                    transition: all 1s ease-out;
                 }
                 .navigation i{
                     font-size: 20px;
