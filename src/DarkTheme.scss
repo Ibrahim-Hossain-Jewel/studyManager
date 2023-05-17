@@ -80,7 +80,15 @@
         padding-bottom: 10px;
         padding-left: 10px;
     }
-    
+    .profileList ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size:larger;
+    }
+    .profileList ul li a{
+        text-decoration: none;
+    }
     .p-dropdown:not(.p-disabled).p-focus {
         border-color: black;
         box-shadow: none;
