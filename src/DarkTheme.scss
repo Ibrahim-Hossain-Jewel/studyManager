@@ -1,24 +1,35 @@
+$whiteColor: white;
+$blackColor: black;
+$grayColor: gray;
+$roundBorder: 7px;
+.mainNavBar{
+    font-weight: 100;
+}
 .dark{
     box-sizing: border-box;
-    background: black;
-    color: white;
+    background: $blackColor;
+    color: $whiteColor;
+    .showMainNav {
+        background-color: $blackColor;
+        border-radius: $roundBorder;
+    }
     a:visited {
-        color: white;
+        color: $whiteColor;
     }
     a:hover{
-        color: gray;
+        color: $grayColor;
     }
     .flex-none {
-        background: black;
+        background: $blackColor;
     }
     .profileDescrip{
-        background: black;
-        color: white;
+        background: $blackColor;
+        color: $whiteColor;
     }
     .profileList{
-        background-color: black;
+        background-color: $blackColor;
         padding-bottom: 10px;
-        color: white;
+        color: $whiteColor;
     }
     .profileList ul {
         list-style: none;
@@ -32,50 +43,54 @@
 
 
     .p-overlaypanel-content{
-        background-color: black;
-        border: 1px solid white;
-        border-radius: 7px;
+        background-color: $blackColor;
+        border: 1px solid $whiteColor;
+        border-radius: $roundBorder;
     }
     .p-dropdown{
-        background-color: black;
+        background-color: $blackColor;
     }
     .p-dropdown:not(.p-disabled):hover {
-        border-color: white;
+        border-color: $whiteColor;
     }
     .p-dropdown:not(.p-disabled).p-focus {
-        border-color: white;
+        border-color: $whiteColor;
         box-shadow: none;
     }
     .p-dropdown-panel .p-dropdown-items .p-dropdown-item{
-        color: white;
+        color: $whiteColor;
     }
     .p-dropdown-items-wrapper {
-        background: black;
-        border: 1px solid white;
-        border-radius: 5px;
+        background: $blackColor;
+        border: 1px solid $whiteColor;
+        border-radius: $roundBorder;
     }
     .p-dropdown .p-dropdown-label{
-        color: white;
+        color: $whiteColor;
     }
     .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight{
-        background-color: black;
+        background-color: $blackColor;
     }
     .p-icon{
-        color: white;
+        color: $whiteColor;
     }
 }
 .light{
     box-sizing: border-box;
-    background: white;
-    color: black;
+    background: $whiteColor;
+    color: $blackColor;
+    .showMainNav{
+        background-color: $whiteColor;
+        border-radius: $roundBorder;
+    } 
     a:visited {
-        color: black;
+        color: $blackColor;
     }
     a:hover{
-        color: gray;
+        color: $grayColor;
     }
     .flex-none {
-        background: white;
+        background: $whiteColor;
     }
     .profileList{
         padding-bottom: 10px;
@@ -91,7 +106,7 @@
         text-decoration: none;
     }
     .p-dropdown:not(.p-disabled).p-focus {
-        border-color: black;
+        border-color: $blackColor;
         box-shadow: none;
     }
 }

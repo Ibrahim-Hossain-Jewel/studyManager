@@ -4,8 +4,13 @@ import { Avatar } from 'primereact/avatar';
 import { Dropdown } from 'primereact/dropdown';
 import { InputSwitch } from "primereact/inputswitch";
 import './style.scss';
-import { Dialog } from 'primereact/dialog';
 import { OverlayPanel } from 'primereact/overlaypanel';
+import { makeSelectPublicLanguage } from "./selector";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import PropTypes from 'prop-types';
+import { setLanguage } from "./action";
+
 class TopNav extends React.Component{
     constructor(){
         super();
@@ -17,16 +22,16 @@ class TopNav extends React.Component{
           navIcon: "pi pi-align-right",
           themeContent: "Dark",
           themeIcon: "pi pi-sun",
-          selectedLanguage: "English",
+          selectedLanguage: "en",
           languages: [
-            {name: "English"}, {name: "বাংলা"} 
+            {name: "en"}, {name: "bn"} 
           ],
           themeState: false,
-
         }
     }
     selectedLanguage = (e)=>{
-      this.setState({selectedLanguage: e.value});
+      localStorage.setItem('selectedlanguage', e.value.name);
+      this.props.onChangeLanguageHandler(e.value.name);
     }
     themeController = ()=>{
       if(this.state.themeState == false){
@@ -57,8 +62,7 @@ class TopNav extends React.Component{
       }
     }
     render(){
-      console.log(JSON.parse(localStorage.getItem("themeState")));
-      console.log("icon", localStorage.getItem('themeIcon'));
+      console.log("selected language : ", localStorage.getItem("selectedlanguage"))
       document.body.className=localStorage.getItem("themeName");
       const start = <img alt="logo" src="https://primefaces.org/cdn/primereact/images/logo.png" height="40" className="mr-2" />;
       const end = 
@@ -67,10 +71,9 @@ class TopNav extends React.Component{
         value={this.state.selectedLanguage}
         onChange={this.selectedLanguage}
         options={this.state.languages}
-        optionLabel="name"
-        placeholder={this.state.selectedLanguage}
+        optionLabel="name"  
+        placeholder={localStorage.getItem("selectedlanguage") || this.state.selectedLanguage}
         className="md:w-0.5rem"
-        selected= {this.state.selectedLanguage}
       />
         <Avatar
           image={require('./IMG_20210518_112211.jpg')}
@@ -152,9 +155,10 @@ class TopNav extends React.Component{
                             </div>
                           </div>
                           <li><Link  className="p-menubar-item" to="/ModelTest">Model Test</Link></li>
-                          <li><Link  className="p-menubar-item" to="/ModelTest">My Classes</Link></li>
-                          <li><Link  className="p-menubar-item" to="/ModelTest">My Money</Link></li>
-                          <li><Link  className="p-menubar-item" to="/jobmpa">Job Map</Link></li>
+                          <li><Link  className="p-menubar-item" to="/ModelTest">Classes</Link></li>
+                          <li><Link  className="p-menubar-item" to="/ModelTest">Money</Link></li>
+                          <li><Link  className="p-menubar-item" to="/jobmap">Job Map</Link></li>
+                          <li><Link  className="p-menubar-item" to="/upload">Upload</Link></li>
                           <li><Link className="p-menubar-item"> <InputSwitch checked={JSON.parse(localStorage.getItem("themeState"))} onChange={this.themeController}/>  <i className={localStorage.getItem('themeIcon')}></i></Link></li>
                         </div>
                       </ul>
@@ -170,4 +174,20 @@ class TopNav extends React.Component{
         );
     }
 }
-export default TopNav;
+
+TopNav.propTypes ={
+  languagesChange:PropTypes.any,
+  onChangeLanguageHandler: PropTypes.func
+};
+const mapStateToProps = createStructuredSelector({
+  languagesChange : makeSelectPublicLanguage(),
+});
+const mapDispatchToProps = (dispatch)=>{
+  return{
+    dispatch,
+    onChangeLanguageHandler: (value)=>{
+      dispatch(setLanguage(value))
+    }
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(TopNav);
