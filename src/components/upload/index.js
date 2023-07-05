@@ -8,12 +8,13 @@ class Upload extends React.Component{
         super();
         this.state = {
             dialogOn: false,
-            dialogOff: true,
+            dialogOff: false,
         }
     }
     classRoomHandler(e){
         console.log("classroom handler");
-        this.setState({dialogOn: true});
+        // this.setState({dialogOn: true});
+        alert("Page is under construction");
     }
     dialogOffHandler(e){
         this.setState({dialogOff: false});
@@ -40,7 +41,7 @@ class Upload extends React.Component{
                 iconPos="left"
                 onClick={this.classRoomHandler}
               />
-            <Dialog
+            {/* <Dialog
             header="Classroom Info"
             visible={this.state.dialogOff}
             onHide={this.state.dialogOn}
@@ -88,7 +89,7 @@ class Upload extends React.Component{
                 </div>
               </div>
             </div>
-          </Dialog>
+          </Dialog> */}
         </div>
         )
     }
